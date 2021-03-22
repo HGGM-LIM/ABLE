@@ -1,0 +1,12 @@
+[submodule "dependencies/gptoolbox"]
+	path = dependencies/gptoolbox
+	url = git@github.com:albertofpena/gptoolbox.git
+[submodule "dependencies/Surface_Tools"]
+	path = dependencies/Surface_Tools
+	url = git@github.com:yasseraleman/Surface_Tools.git
+[submodule "dependencies/Miscellaneous_Tools"]
+	path = dependencies/Miscellaneous_Tools
+	url = https://github.com/yasseraleman/Miscellaneous_Tools.git
+[submodule "dependencies/BrainVisa_Tools"]
+	path = dependencies/BrainVisa_Tools
+	url = https://github.com/yasseraleman/BrainVisa_Tools.git
