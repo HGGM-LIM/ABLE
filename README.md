@@ -1,4 +1,4 @@
-# ABLE: Automated Brain Lines Extraction Based onLaplacian Skeletonization
+# ABLE: Automated Brain Lines Extraction Based on Laplacian Skeletonization
 
 Work in Progress
 
