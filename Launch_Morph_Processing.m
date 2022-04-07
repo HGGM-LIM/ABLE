@@ -3,9 +3,6 @@ function Launch_Morph_Processing(pialSurfLHFile,pialCurvLHFile,whiteSurfLHFile,w
     outputFile)
 
 
-addpath('dependencies/matlab_mods/');
-
-
 
 disp('Estimating Left Hemisphere');
 

@@ -75,6 +75,7 @@ elseif nargin == 4
         end
         if ~isfield(opts,'depthmap')
             opts.depthmap = 0;         % Depth Map
+        end
         if ~isfield(opts,'filteriter')
             opts.filteriter = 100;
         else

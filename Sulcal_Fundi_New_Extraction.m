@@ -1,24 +1,41 @@
-function [fundiEdges,gyralCrowns,endPoints,sulcalBasins,depthMap] = Sulcal_Fundi_New_Extraction(pialSurfFile,pialCurvFile,whiteSurfFile,whiteCurvFile,annotFile)
+function [fundiEdges,gyralCrowns,endPoints,sulcalBasins,depthMap] = Sulcal_Fundi_New_Extraction(pialSurf,pialCurv,whiteSurf,whiteCurv,annot)
 
 DEPTH_THR = 2;
 FILTER_ITER = 100;
 
-Surf = Read_Surface(whiteSurfFile);
-Pial = Read_Surface(pialSurfFile);
-annot = read_cfiles(annotFile);
+if isstring(whiteSurf) || ischar(whiteSurf)
+    Surf = Read_Surface(whiteSurf);
+else
+    Surf = whiteSurf;
+end
 
-curv = read_cfiles(whiteCurvFile);
-curv_pial = read_cfiles(pialCurvFile);
+if isstring(pialSurf) || ischar(pialSurf)
+    Pial = Read_Surface(pialSurf);
+else
+    Pial = pialSurf;
+end
 
-% Surf = Read_Surface(whiteSurfFile);
-% Pial = Read_Surface(pialSurfFile);
-% annot = read_cfiles(annotFile);
+if isstring(annot) || ischar(annot)
+    annot = read_cfiles(annot); 
+end
 
-% curv = discrete_mean_curvature(Pial.SurfData.vertices,Pial.SurfData.faces)*-1;
-% opts.nSmooth = 3;
-% curv = Geodesic_Map_Smoothing(Pial,curv,opts);
+if isstring(whiteCurv) || ischar(whiteCurv)
+    curv = read_cfiles(whiteCurv);
+else
+    curv = whiteCurv;
+end
 
-% disp('Depth Map Estimation');
+if isstring(pialCurv) || ischar(pialCurv)
+    curv_pial = read_cfiles(pialCurv);
+else
+    curv_pial = pialCurv;
+end
+
+%curv = discrete_mean_curvature(Pial.SurfData.vertices,Pial.SurfData.faces)*-1;
+%opts.nSmooth = 3;
+%curv = Geodesic_Map_Smoothing(Pial,curv,opts);
+
+disp('Depth Map Estimation');
 [V,F] = signed_distance_isosurface(Pial.SurfData.vertices,Pial.SurfData.faces,'Level',10,'GridSize',400);
 [V,F] = signed_distance_isosurface(V,F,'Level',-10,'GridSize',400);
 [~,I,~,~] = signed_distance(V,Pial.SurfData.vertices,Pial.SurfData.faces);
@@ -26,6 +43,8 @@ indd = Pial.SurfData.faces(I,:);
 indd = unique(indd(:));
 depthMap = Compute_Geodesic_Distance_Transform(Pial,indd);
 depthMap = Geodesic_Map_Smoothing(Surf,depthMap);
+
+% depthMap = travelDepth(Pial.SurfData.vertices,Pial.SurfData.faces);
 
 % load('100408-depthmap.mat'); 
 
