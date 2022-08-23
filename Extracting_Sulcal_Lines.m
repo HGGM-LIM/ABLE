@@ -63,7 +63,7 @@ end
 if nargin < 4
     opts.dephtmap = 0;
     opts.endpthr  = 6;
-    opts.filteriter = 100;
+    opts.filteriter = 50;
 elseif nargin == 4
     opts = varargin{4};
     if isstruct(opts)
@@ -77,7 +77,7 @@ elseif nargin == 4
             opts.depthmap = 0;         % Depth Map
         end
         if ~isfield(opts,'filteriter')
-            opts.filteriter = 100;
+            opts.filteriter = 50;
         else
             if length(opts.depthmap)~= size(Surf.SurfData.vertices,1)
                 warning('Different sizes between depth map and surface. Depth map will not be used');

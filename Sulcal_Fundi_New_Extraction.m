@@ -1,7 +1,7 @@
 function [fundiEdges,gyralCrowns,endPoints,sulcalBasins,depthMap] = Sulcal_Fundi_New_Extraction(pialSurf,pialCurv,whiteSurf,whiteCurv,annot)
 
 DEPTH_THR = 2;
-FILTER_ITER = 100;
+FILTER_ITER = 50;
 
 if isstring(whiteSurf) || ischar(whiteSurf)
     Surf = Read_Surface(whiteSurf);
@@ -30,6 +30,7 @@ if isstring(pialCurv) || ischar(pialCurv)
 else
     curv_pial = pialCurv;
 end
+
 
 %curv = discrete_mean_curvature(Pial.SurfData.vertices,Pial.SurfData.faces)*-1;
 %opts.nSmooth = 3;
@@ -121,11 +122,11 @@ points = [0];
 sLines = [0 0];
 [opts2{1:Nsulc}] = deal(opts);
 
-% clust = parcluster('local');
-% clust.NumWorkers = 2;
-% parpool(clust.NumWorkers);
+clust = parcluster('local');
+clust.NumWorkers = 4;
+parpool(clust.NumWorkers);
 
-for i = 1:Nsulc % For each sulcal space
+parfor i = 1:Nsulc % For each sulcal space
     disp(['Processing Sulcal Space ' num2str(i) ' from ' num2str(Nsulc)]);
     
     Surftt = Pial;
@@ -249,7 +250,7 @@ for i = 1:Nsulc % For each sulcal space
     indCell = [];
     curvmapt = [];
 end
-% delete(gcp('nocreate'));
+delete(gcp('nocreate'));
 points(1,:) = [];
 sLines(1,:) = [];
 
@@ -260,6 +261,7 @@ sulcalBasins = newParcell;
 Surf = Surf_Corr(Surf);
 
 newParcell = Surf.Is;
+
 
 
 end
