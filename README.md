@@ -27,3 +27,9 @@ Then, gptoolbox must be compiled, for that
 Further instructions can be found in https://github.com/alecjacobson/gptoolbox/blob/master/mex/README.md
 
 Finally, just add the dependencies folder to the MATLAB path.
+
+## Docker (Experimental)
+An early version of a docker container has been created. The container is accessible executing:
+    docker push albertofpena/able:traveldepth
+    
+This version estimates the depth map using Mindboggle's Travel Depth. The documentation for this part is still lacking and not all the parameters have been exposed. Further improvements can be expected in the following weeks.
