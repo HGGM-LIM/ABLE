@@ -28,4 +28,8 @@ Further instructions can be found in https://github.com/alecjacobson/gptoolbox/b
 
 Finally, just add the dependencies folder to the MATLAB path.
 
+## Citation
+
+If you use this code, please cite the paper in https://doi.org/10.1007/s12021-022-09601-7
+ 
 
