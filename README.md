@@ -28,6 +28,14 @@ Further instructions can be found in https://github.com/alecjacobson/gptoolbox/b
 
 Finally, just add the dependencies folder to the MATLAB path.
 
+## Docker
+
+There is a Docker available that can be used with the following command:
+
+    docker run -v /path/to/freesurfer/subject/:/input -v /path/to/output/folder:/out albertofpena/able:latest ABLE /input /out/subj.mat
+
+Note that in this case, the initial depth map is estimated using a travel depth algorithm instead of the exact geodesic.
+
 ## Citation
 
 If you use this code, please cite the paper in https://doi.org/10.1007/s12021-022-09601-7
