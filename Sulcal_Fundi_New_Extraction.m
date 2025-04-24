@@ -126,7 +126,9 @@ clust = parcluster('local');
 clust.NumWorkers = 4;
 parpool(clust.NumWorkers);
 
+
 parfor i = 1:Nsulc % For each sulcal space
+% for i = 1:Nsulc % For each sulcal space
     disp(['Processing Sulcal Space ' num2str(i) ' from ' num2str(Nsulc)]);
     
     Surftt = Pial;

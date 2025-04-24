@@ -17,7 +17,7 @@ Surft.SurfData.vertices = W;
 Surft.SurfData.faces = Surf.SurfData.faces;
 
 A = surface2graph(Surf);
-dist_mat = graphallshortestpaths(A);
+dist_mat = distances(graph(A));
 
 
 possible_endpoints = zeros(size(W,1),1);

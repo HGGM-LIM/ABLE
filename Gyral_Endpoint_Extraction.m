@@ -48,7 +48,7 @@ point_count = zeros(size(U,1),1);
 
 for i = candidates
     
-    [dist_row,~,~] = graphshortestpath(Graph,i,'Directed',false);
+    dist_row = distances(graph(Graph),i);
 
     
     points = U(dist_row < NEIGHB_DISTANCE,:);

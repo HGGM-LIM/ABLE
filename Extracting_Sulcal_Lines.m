@@ -339,7 +339,8 @@ else
         tempVar = Branches(ind2explore(st),:);
         stpoint = tempVar(1);
         endpoint = tempVar(2);
-        [len,~] = graphshortestpath(Graph,stpoint,endpoint);
+        % [len,~] = graphshortestpath(Graph,stpoint,endpoint);
+        len = distances(graph(Graph),stpoint,endpoint);
         lengthVect(st) = len;
     end
     
