@@ -320,7 +320,7 @@ distances = ((distTransfmap([Branches(:,1);Branches(:,2)]) +  distTransfmap([Bra
 distances = distances(iak);
 Graph = sparse(C(:,1),C(:,2),distances,length(Surf.SurfData.vertices),length(Surf.SurfData.vertices));
 % Graph with no cycles and minimum total weight
-[Tree, ~] = graphminspantree(Graph);
+[~, ~, Tree] = kruskal(adjacency(graph(Graph)),Graph);
 [X,Y] = find(Tree);
 
 
